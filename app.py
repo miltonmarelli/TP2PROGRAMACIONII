@@ -4,23 +4,23 @@ from Profesor import *
 from Curso import *
 from functions import *    
     
-estudiantes = []#no funciona , hacerlo ver con profe
-profesores = []
-carreras =[]
+estudiantes = [] #no funciona , hacerlo ver con profe
+profesores = []#no funciona , hacerlo ver con profe
+carreras =[]#no funciona , hacerlo ver con profe
 
 estudiante1 = Estudiante('Milton', 'marelli', 'milton@ejemplo.com', 'password', 1, 2023)
 estudiantes.append(estudiante1)
 estudiante2 = Estudiante('Joel', 'pepe', 'joel@ejemplo.com', 'password', 2, 2023)
 estudiantes.append(estudiante2)
-estudiante3 = Estudiante('Ciro', 'pepi', 'ciro@ejemplo.com', 'password', 3, 2023)#no funciona , hacerlo ver con profe
+estudiante3 = Estudiante('Ciro', 'pepi', 'ciro@ejemplo.com', 'password', 3, 2023)
 estudiantes.append(estudiante3)
     
 profesor1 = Profesor('Mercedes', 'Valoni', 'mercedes@ejemplo.com', 'password', 'Programacion', 2010)
 profesores.append(profesor1)
 profesor2 = Profesor('Tomas', 'Ponce', 'tomas@ejemplo.com', 'password', 'Programacion', 2008)
 profesores.append(profesor2)
-curso1 = Curso('Programacion', 'matriculacion123')  #no funciona , hacerlo ver con profe
-carreras.append(curso1)
+
+curso1 = Curso('Programacion', 'matriculacion123')  
 
 while True:
     print("Menú:")
