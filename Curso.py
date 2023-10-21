@@ -1,21 +1,28 @@
-from Estudiante import Estudiante
-from Profesor import Profesor
+import random
+import string
 
-class Curso(Estudiante, Profesor):
+class Curso:
     def __init__(self, nombreCurso, contrasenia_matriculacion):
-        super().__init__('', '', '', '', 0, 0)
         self.__nombreCurso = nombreCurso
         self.__contrasenia_matriculacion = contrasenia_matriculacion
 
     @property
     def nombreCurso(self):
         return self.__nombreCurso
+
     @property
     def contrasenia_matriculacion(self):
         return self.__contrasenia_matriculacion
     
+    @contrasenia_matriculacion.setter
+    def contrasenia_matriculacion(self, nueva_contrasenia):
+        self.__contrasenia_matriculacion = nueva_contrasenia
+    
+    def generar_contrasenia(): 
+        # reciclo codigo del TP anterior dado por los profes
+        characters = string.ascii_letters + string.digits
+        cod = ''.join(random.choice(characters) for i in range(8))
+        return cod
+    
     def infoCurso(self):
-        return f"Curso: {self.__nombre}"
-
-    def generar_contrasenia(self):
-        pass
+        return f"Curso: {self.__nombreCurso}"

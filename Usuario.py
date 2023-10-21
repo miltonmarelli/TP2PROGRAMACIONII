@@ -23,10 +23,8 @@ class Usuario(ABC):
     def contrasenia(self):
         return self.__contrasenia
 
-    @abstractmethod
     def infoUsuario(self):
         pass
 
-    @abstractmethod
     def validar_credenciales(self, email, contrasenia):
-        pass
+        return self.email == email and self.contrasenia == contrasenia
