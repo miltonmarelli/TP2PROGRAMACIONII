@@ -1,7 +1,8 @@
 from Estudiante import Estudiante
 from Profesor import Profesor
 from Curso import Curso
-from functions import ingresar_como_alumno 
+from functions import ingresar_como_alumno
+from functions import ingresar_como_profesor 
 
 estudiantes = []
 profesores = []
@@ -23,14 +24,14 @@ curso1 = Curso('InglesI','matricula123')
 carreras.append(curso1)
 curso2 = Curso('InglesII','matricula123')
 carreras.append(curso2)
-curso3 = Curso('Laboratorio I','matricula123')
-carreras.append(curso3)
-curso4 = Curso('Laboratorio II', 'matricula123')
-carreras.append(curso4)
-curso5 = Curso('Programación I','matricula123')
-carreras.append(curso5)
-curso6 = Curso('Programación II', 'matricula123')
-carreras.append(curso6)
+# curso3 = Curso('Laboratorio I','matricula123')
+# carreras.append(curso3)
+# curso4 = Curso('Laboratorio II', 'matricula123')
+# carreras.append(curso4)
+# curso5 = Curso('Programación I','matricula123')
+# carreras.append(curso5)
+# curso6 = Curso('Programación II', 'matricula123')
+# carreras.append(curso6) se comenta para hacer prueba de crear curso con usuario profesor
 
 while True:
     print("Menú:")
@@ -59,28 +60,54 @@ while True:
                                 curso_elegido = carreras[opcion_curso - 1] #se resta 1 porque la lista empiesa con el indice 0 
                                 estudiante.matricular_en_curso(curso_elegido) 
                             else:
-                                print("Numero no valido ")
+                                print("-Numero no valido ")
                         else:
-                            print("Ingrese un numero valido") 
+                            print("-Ingrese un numero valido") 
                     elif sub_opcion == "2":
                         if len(estudiante.mis_cursos) > 0:
-                            print("\t Cursos matriculados:")
+                            print("\t - Tus Cursos:")
                             for curso in estudiante.mis_cursos:
                                 print(f"\t Nombre: - {curso.nombreCurso} -")
                         else:
-                            print("\t No se ha anotado en ningun curso aun!")
+                            print("\t -No se ha anotado en ningun curso aun!")
                     elif sub_opcion == "3":
-                        break                   
-        elif opcion == "2":
-            from functions import ingresar_como_profesor
-            ingresar_como_profesor(profesores)
-        elif opcion == "3":
-            curso_ordenado = sorted(carreras, key=lambda curso: curso.nombreCurso)
-            for curso in curso_ordenado:
-                print(f"Materia: {curso.nombreCurso} \n Carrera: Tecnicatura Universitaria en Programacion")
-        elif opcion == "4":
-            print("Saliendo del sistema")
-            break
+                        break   
+                    else:
+                        print("Ingrese una opcion valida")                
+    elif opcion == "2":
+            profesor= ingresar_como_profesor(profesores)
+            if profesor is not None:
+                while True:
+                    print("Submenu Profesor:")
+                    print("1. Dictar curso")
+                    print("2. Ver cursos")
+                    print("3. Volver al menu principal")
+                    sub_opcion = input("\t -Seleccione una opción: \n")
+                    if sub_opcion == "1":
+                        nombre_curso = input("\tIngrese el nombre del curso: \n ")
+                        nuevo_curso = profesor.dictar_curso(nombre_curso, carreras)
+                        print(f"\t Curso dado de alta exitosamente!")
+                        print(f"\t NOMBRE : {nuevo_curso.nombreCurso}")
+                        print(f"\t CONTRASEÑA : ` {nuevo_curso.contrasenia_matriculacion} `\n")
+                    elif sub_opcion == "2":
+                        if len(profesor.mis_cursos) > 0:
+                            print("\t - Tus Cursos:")
+                            for curso in profesor.mis_cursos:
+                                print(f"\t NOMBRE : {nuevo_curso.nombreCurso}\n ")
+                                print(f"\t CONTRASEÑA : ` {nuevo_curso.contrasenia_matriculacion} `\n")
+                        else:
+                            print("\t -No se ha registrado en ningun curso aun!")
+                    elif sub_opcion == "3":
+                        break   
+                    else:
+                        print("Ingrese una opcion valida")                    
+    elif opcion == "3":
+        curso_ordenado = sorted(carreras, key=lambda curso: curso.nombreCurso)
+        for curso in curso_ordenado:
+            print(f" \t Materia: {curso.nombreCurso} \n Carrera: Tecnicatura Universitaria en Programacion")
+    elif opcion == "4":
+        print("Saliendo del sistema")
+        break
     else:
         print("Ingrese una opcion valida")
 

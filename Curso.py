@@ -18,11 +18,13 @@ class Curso:
     def contrasenia_matriculacion(self, nueva_contrasenia):
         self.__contrasenia_matriculacion = nueva_contrasenia
     
-    def generar_contrasenia(): 
+    @classmethod
+    def generar_contrasenia(cls): 
         # reciclo codigo del TP anterior dado por los profes
         characters = string.ascii_letters + string.digits
         cod = ''.join(random.choice(characters) for i in range(8))
         return cod
+    
     
     def infoCurso(self):
         return f"Curso: {self.__nombreCurso}"

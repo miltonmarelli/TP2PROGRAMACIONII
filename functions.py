@@ -24,15 +24,15 @@ def ingresar_como_profesor(profesores:list):
             profesor = profe
             break
     if profesor is not None:
-        contrasenia = input("Ingrese su contraseña: \n")
+        contrasenia = input("\tIngrese su contraseña: \n")
         if profesor.validar_credenciales(email, contrasenia):
             print(f"\tBienvenido, Profesor {profesor.nombre} {profesor.apellido}!\n")
-            return True
+            return profesor
         else:
             print("Contraseña incorrecta\n")
-            return False
+           
     else:
         print("\t Profesor no encontrado, darse de alta en alumnado\n")
-        return False
+    
  
      
