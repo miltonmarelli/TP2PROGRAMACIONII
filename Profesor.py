@@ -1,5 +1,6 @@
 from Usuario import Usuario
 from Curso import Curso
+from Carrera import Carrera
 
 class Profesor(Usuario):
     def __init__(self, nombre, apellido, email, contrasenia, titulo, anio_egreso):
@@ -7,6 +8,7 @@ class Profesor(Usuario):
         self.__titulo = titulo
         self.__anio_egreso = anio_egreso
         self.__mis_cursos = []
+    
         
     @property
     def titulo(self):
@@ -23,11 +25,14 @@ class Profesor(Usuario):
 
     def dictar_curso(self, nombre_curso, cursos):
         nueva_contrasenia = Curso.generar_contrasenia()
-        nuevo_curso = Curso(nombre_curso, nueva_contrasenia)
+        nuevo_curso = Curso(nombre_curso, nueva_contrasenia, Carrera)
         self.mis_cursos.append(nuevo_curso)
         cursos.append(nuevo_curso)
-        return nuevo_curso 
+        return nuevo_curso
       
     
     def validar_credenciales(self, email, contrasenia):
-        return self.email == email and self.contrasenia == contrasenia
+        if self.email == email and self.contrasenia == contrasenia:
+            return True
+        else:
+            return False

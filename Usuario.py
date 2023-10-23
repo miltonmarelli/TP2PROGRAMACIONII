@@ -22,9 +22,13 @@ class Usuario(ABC):
     @property
     def contrasenia(self):
         return self.__contrasenia
+ 
 
     def infoUsuario(self):
         pass
 
     def validar_credenciales(self, email, contrasenia):
-        return self.email == email and self.contrasenia == contrasenia
+        if self.email == email and self.contrasenia == contrasenia:
+            return True
+        else:
+            return False
